@@ -35,6 +35,8 @@ while True:
         print("\nTips: 1. Copy & paste path from windows explorer."
               "\n      2. Leave trailing \"\\\" after last folder name. ")
         path = input("\nEnter valid full path for download directory: ")
+        if path[-1:] != '\\':
+            path += '\\'
         if os.path.isdir(path):
             print("\nAccepted!")
             break
@@ -85,7 +87,7 @@ ytdl_opts = {
     }],
 }
 
-for link in linkLst[260:]:
+for link in linkLst:
 
     # Download the song with the given dir & name
     try:
