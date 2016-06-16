@@ -1,6 +1,7 @@
 # Jarvis Prestidge: BeautifulSoup web-scraping script
 # Description:		Download hypster.com playlist in .mp3
 
+from __future__ import unicode_literals
 from bs4 import BeautifulSoup
 
 import os
@@ -15,7 +16,7 @@ print("\nWelcome to the hypster playlist downloader.\n"
 print("\n================================================================")
 
 while True:
-    url = input("\nEnter valid hypster playlist url: ")
+    url = raw_input("\nEnter valid hypster playlist url: ")
     domain = "hypster.com/playlists/"
     try:
         realUrl = requests.get(url).status_code
@@ -30,17 +31,20 @@ while True:
 print("\n================================================================")
 
 while True:
-    isPath = input("\nWould you like to specify a download directory? (y/n) ")
+    isPath = raw_input("\nWould you like to specify a "
+                       "download directory? (y/n) ")
     if isPath == 'y':
         print("\nTips: 1. Copy & paste path from windows explorer."
               "\n      2. Leave trailing \"\\\" after last folder name. ")
-        path = input("\nEnter valid full path for download directory: ")
-        if path[-1:] != '\\':
-            path += '\\'
-        if os.path.isdir(path):
-            print("\nAccepted!")
-            break
-        print("\nPath does not exist... please try again.")
+        path = raw_input("\nEnter valid full path for download directory: ")
+        if len(path) > 0:
+            if path[-1:] != '\\':
+                path += '\\'
+            if os.path.isdir(path):
+                print("\nAccepted!")
+                break
+        else:
+            print("\nPath does not exist... please try again.")
     elif isPath == 'n':
         path = os.environ.get('USERPROFILE') + \
             "\\Downloads\\hypster-playlist\\"
