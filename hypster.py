@@ -2,6 +2,7 @@
 # Description:		Download hypster.com playlist in .mp3
 
 from __future__ import unicode_literals
+from __future__ import division
 from bs4 import BeautifulSoup
 
 import os
@@ -37,10 +38,10 @@ while True:
         print("\nTips: 1. Copy & paste path from windows explorer."
               "\n      2. Leave trailing \"\\\" after last folder name. ")
         path = raw_input("\nEnter valid full path for download directory: ")
-        if len(path) > 0:
-            if path[-1:] != '\\':
-                path += '\\'
-            if os.path.isdir(path):
+        if os.path.isdir(path):
+            if len(path) > 0:
+                if path[-1:] != '\\':
+                    path += '\\'
                 print("\nAccepted!")
                 break
         else:
@@ -91,12 +92,21 @@ ytdl_opts = {
     }],
 }
 
+# Print the number of songs to download
+print(str(len(linkLst)) + " songs in playlist.\n")
+
+count = 0
+
 for link in linkLst:
 
     # Download the song with the given dir & name
     try:
         # Calling youtube-dl with the ytdl_opt dict
         with youtube_dl.YoutubeDL(ytdl_opts) as ytdl:
+            count += 1
+            print("\nDownload number: " + str(count))
+            percent = (count / len(linkLst)) * 100
+            print("Overall {:.2f}".format(percent) + "% complete.\n")
             # Downloading the audio
             ytdl.download([link])
     except youtube_dl.utils.DownloadError:
