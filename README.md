@@ -4,16 +4,18 @@
 
 > This is essentially a wrapper around the youtube-dl package developed by [Ricardo Garcia](https://github.com/rg3) 
 
-#### Required packages to run the script:
+### The release can be found here
+
+#### Required python pip modules to run the script (hypster.py):
 * requests
 * youtube-dl
 * beautifulsoup4
 
-#### The script has hard dependancies on FFmpeg, as such it requires the following binaries to be availble either on the path or in the same working directory as the script during execution:
+#### Both the python script and the release executable have hard dependancies on the ffmpeg libraries. As such the following binaries must be availble either on the environent path or in the same working directory as the script during execution:
 * ffmpeg.exe
 * ffprobe.exe
 
-> These dependancies are packaged in the bin directory of the current release which can be found ***[here]()***
+> These dependancies are packaged into the bin directory of the current release but can also be found in the lib folder of the repo
 
 It may be the case that not all youtube videos are permitted to be viewed (as thus downloaded) in your region. In this case the program will alert you, however won't be able to work around this restriction.
 
