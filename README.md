@@ -1,11 +1,22 @@
 # Hypster Playlist Downloader
 
-Simple command line tool to scrape a hypster playlist url for youtube video links, then rip and convert the audio into mp3 format using the highest quality audio codecs availble on youtube.
+ Command line tool written in python to download a hypster playlist as mp3's. The script first scrapes a hypster playlist url for youtube video links, then rips and converts the audio into mp3 format using the highest quality audio codecs made availble by youtube.
 
-This python script is a wrapper around the youtube-dl package developed by Ricardo Garcia - https://github.com/rg3.
+> This is essentially a wrapper around the youtube-dl package developed by [Ricardo Garcia](https://github.com/rg3) 
 
-Use: download/clone the repo and run the dist/hypster.exe executalble or kick off the python script using Python 2.x. You will then be prompted to provide a valid hypster.com playlist url and specify a download location if you so wish. 
+#### Required packages to run the script:
+* requests
+* youtube-dl
+* beautifulsoup4
 
-Below is an screenshot of the .exe at work called via windows command line.
+#### The script has hard dependancies on FFmpeg, as such it requires the following binaries to be availble either on the path or in the same working directory as the script during execution:
+* ffmpeg.exe
+* ffprobe.exe
+
+> These dependancies are packaged in the bin directory of the current release which can be found ***[here]()***
+
+It may be the case that not all youtube videos are permitted to be viewed (as thus downloaded) in your region. In this case the program will alert you, however won't be able to work around this restriction.
+
+Example of the script in action:
 
 ![Example use](/screenshot.png?raw=true)
